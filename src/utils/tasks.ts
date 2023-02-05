@@ -1,4 +1,6 @@
-type TaskType = {
+import { type } from "os"
+
+export type TaskType = {
     id: number
     title: string
     isDone: boolean
@@ -29,3 +31,4 @@ export const movies : TaskType[] = [
     }
 ]
  
+export type FilterValuesType = "all" | "completed" | "active"

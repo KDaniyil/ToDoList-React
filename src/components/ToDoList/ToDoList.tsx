@@ -7,7 +7,7 @@ function ToDoList(props: Props) {
     return (
         <>
             <ToDoListItem toDoName={'What to learn:'} initTasks={skills} />
-            {/* <ToDoListItem toDoName={'Favorite movies:'} task={movies} /> */}
+            <ToDoListItem toDoName={'Favorite movies:'} initTasks={movies} />
         </>
     )
 }
