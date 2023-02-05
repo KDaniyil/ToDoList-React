@@ -3,7 +3,7 @@ type TaskType = {
     title: string
     isDone: boolean
 }
-export const task1 : TaskType[] = [
+export const skills : TaskType[] = [
     {
         id: 1, title: "CSS", isDone: true
     },
@@ -12,9 +12,12 @@ export const task1 : TaskType[] = [
     },
     {
         id: 3, title: "React", isDone: false
+    },
+    {
+        id: 4, title: "Redux", isDone: false
     }
 ]
-export const task2 : TaskType[] = [
+export const movies : TaskType[] = [
     {
         id: 1, title: "Terminator", isDone: true
     },
@@ -25,3 +28,4 @@ export const task2 : TaskType[] = [
         id: 3, title: "Mortal Combat 2021", isDone: true
     }
 ]
+ 

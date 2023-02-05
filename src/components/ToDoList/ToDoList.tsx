@@ -1,13 +1,13 @@
 import ToDoListItem from './ToDoListItem'
-import { task1, task2 } from '../../utils/tasks'
+import { movies, skills } from '../../utils/tasks'
 
 type Props = {}
 
 function ToDoList(props: Props) {
     return (
         <>
-            <ToDoListItem toDoName={'What to learn:'} task={task1} />
-            <ToDoListItem toDoName={'Favorite movies:'} task={task2} />
+            <ToDoListItem toDoName={'What to learn:'} initTasks={skills} />
+            {/* <ToDoListItem toDoName={'Favorite movies:'} task={movies} /> */}
         </>
     )
 }

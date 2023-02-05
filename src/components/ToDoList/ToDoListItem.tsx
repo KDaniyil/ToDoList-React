@@ -1,15 +1,21 @@
+import { useState } from 'react'
 import ToDoListItemTask from './ToDoListItemTask'
 
 type Props = {
     toDoName: string
-    task: TaskType[]
+    initTasks: TaskType[]
 }
 type TaskType = {
     id: number
     title: string
     isDone: boolean
 }
-const ToDoListItem = ({ toDoName, task }: Props) => {
+const ToDoListItem = ({ toDoName, initTasks }: Props) => {
+    const [listTasks, setListTasks] = useState(initTasks)
+
+    function removeTask(id: number) {
+        setListTasks(listTasks.filter((task) => task.id !== id))
+    }
     return (
         <>
             <h3>{toDoName}</h3>
@@ -18,13 +24,14 @@ const ToDoListItem = ({ toDoName, task }: Props) => {
                 <button>+</button>
             </div>
             <ul>
-                {task.map(({ id, title, isDone }) => {
+                {listTasks.map(({ id, title, isDone }) => {
                     return (
                         <>
                             <ToDoListItemTask
                                 id={id}
                                 title={title}
                                 isDone={isDone}
+                                removeTask={removeTask}
                             />
                         </>
                     )
