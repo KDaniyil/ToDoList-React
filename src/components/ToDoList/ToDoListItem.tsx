@@ -1,7 +1,10 @@
+import { Button, ButtonGroup, Fab, Grid, TextField } from '@mui/material'
+import AddIcon from '@mui/icons-material/Add'
 import { useState } from 'react'
 import { FilterValuesType } from '../../utils/tasks'
 import ToDoListItemTask from './ToDoListItemTask'
-
+import '../ToDoList/ToDoList.css'
+import Typography from '@mui/material/Typography'
 type Props = {
     toDoName: string
     initTasks: TaskType[]
@@ -31,12 +34,20 @@ const ToDoListItem = ({ toDoName, initTasks }: Props) => {
 
     return (
         <>
-            <h3>{toDoName}</h3>
-            <div>
-                <input type="text" />
-                <button>+</button>
-            </div>
-            <ul>
+            <Typography variant="h4" component="h3">
+                {toDoName}
+            </Typography>
+            <TextField
+                hiddenLabel
+                id="filled-hidden-label-small"
+                variant="outlined"
+                size="small"
+            />
+            <Fab color="primary" aria-label="add" size="small">
+                <AddIcon />
+            </Fab>
+
+            <ul className="listTasks">
                 {tasksForTodoList.map(({ id, title, isDone }) => {
                     return (
                         <>
@@ -50,29 +61,34 @@ const ToDoListItem = ({ toDoName, initTasks }: Props) => {
                     )
                 })}
             </ul>
-            <div>
-                <button
+            <ButtonGroup
+                variant="outlined"
+                size="small"
+                color="primary"
+                aria-label="small outlined button group"
+            >
+                <Button
                     onClick={() => {
                         changeFilter('all')
                     }}
                 >
                     All
-                </button>
-                <button
+                </Button>
+                <Button
                     onClick={() => {
                         changeFilter('active')
                     }}
                 >
                     Active
-                </button>
-                <button
+                </Button>
+                <Button
                     onClick={() => {
                         changeFilter('completed')
                     }}
                 >
                     Completed
-                </button>
-            </div>
+                </Button>
+            </ButtonGroup>
         </>
     )
 }

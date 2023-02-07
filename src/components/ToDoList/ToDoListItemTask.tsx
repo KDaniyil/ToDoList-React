@@ -1,22 +1,33 @@
+import { IconButton } from '@mui/material'
+import DeleteIcon from '@mui/icons-material/Delete'
+import FormGroup from '@mui/material/FormGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import Checkbox from '@mui/material/Checkbox'
+
 type Props = {
     id: number
     title: string
     isDone: boolean
-    removeTask: Function
+    removeTask: (id: number) => void
 }
 const ToDoListItemTask = ({ id, title, isDone, removeTask }: Props) => {
     return (
         <>
             <li>
-                <input type="checkbox" checked={isDone} />
-                <span>{title}</span>
-                <button
+                <FormControlLabel
+                    control={<Checkbox checked={isDone} />}
+                    label={title}
+                />
+                <IconButton
+                    aria-label="delete"
+                    size="small"
+                    color="primary"
                     onClick={() => {
                         removeTask(id)
                     }}
                 >
-                    x
-                </button>
+                    <DeleteIcon fontSize="inherit" />
+                </IconButton>
             </li>
         </>
     )
