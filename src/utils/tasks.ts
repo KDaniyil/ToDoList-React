@@ -30,5 +30,20 @@ export const movies : TaskType[] = [
         id: 3, title: "Mortal Combat 2021", isDone: true
     }
 ]
+
+export const songs : TaskType[] = [
+    {
+        id: 1, title: "Temptation", isDone: true
+    },
+    {
+        id: 2, title: "Ghost", isDone:true
+    },
+    {
+        id: 3, title: "Infectious", isDone: true
+    },
+    {
+        id: 4, title: "Surrender", isDone: false
+    }
+]
  
 export type FilterValuesType = "all" | "completed" | "active"

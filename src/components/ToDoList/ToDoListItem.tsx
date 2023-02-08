@@ -1,10 +1,18 @@
-import { Button, ButtonGroup, Fab, Grid, TextField } from '@mui/material'
+import {
+    Button,
+    ButtonGroup,
+    CardActionArea,
+    Fab,
+    Grid,
+    TextField,
+} from '@mui/material'
 import AddIcon from '@mui/icons-material/Add'
 import { useState } from 'react'
 import { FilterValuesType } from '../../utils/tasks'
 import ToDoListItemTask from './ToDoListItemTask'
 import '../ToDoList/ToDoList.css'
 import Typography from '@mui/material/Typography'
+
 type Props = {
     toDoName: string
     initTasks: TaskType[]
@@ -17,6 +25,7 @@ type TaskType = {
 const ToDoListItem = ({ toDoName, initTasks }: Props) => {
     const [listTasks, setListTasks] = useState<TaskType[]>(initTasks)
     const [filter, setFilter] = useState<FilterValuesType>('all')
+    const [newTaskName, setNewTaskName] = useState('')
 
     function removeTask(id: number) {
         setListTasks(listTasks.filter((task) => task.id !== id))
@@ -31,7 +40,24 @@ const ToDoListItem = ({ toDoName, initTasks }: Props) => {
     if (filter === 'active') {
         tasksForTodoList = listTasks.filter((task) => task.isDone === false)
     }
-
+    function addTask() {
+        const newTask: TaskType = {
+            id: tasksForTodoList.length + 1,
+            isDone: false,
+            title: newTaskName,
+        }
+        tasksForTodoList = [...listTasks, newTask]
+        setListTasks(tasksForTodoList)
+    }
+    function changeIsDone(id: number) {
+        tasksForTodoList = [...listTasks]
+        tasksForTodoList.find((task) => {
+            if (task.id === id) {
+                task.isDone = !task.isDone
+            }
+        })
+        setListTasks(tasksForTodoList)
+    }
     return (
         <>
             <Typography variant="h4" component="h3">
@@ -42,8 +68,17 @@ const ToDoListItem = ({ toDoName, initTasks }: Props) => {
                 id="filled-hidden-label-small"
                 variant="outlined"
                 size="small"
+                onChange={(event) => setNewTaskName(event.target.value)}
+                placeholder="Insert task title:"
             />
-            <Fab color="primary" aria-label="add" size="small">
+            <Fab
+                color="primary"
+                aria-label="add"
+                size="small"
+                onClick={() => {
+                    addTask()
+                }}
+            >
                 <AddIcon />
             </Fab>
 
@@ -52,10 +87,12 @@ const ToDoListItem = ({ toDoName, initTasks }: Props) => {
                     return (
                         <>
                             <ToDoListItemTask
+                                key={id}
                                 id={id}
                                 title={title}
                                 isDone={isDone}
                                 removeTask={removeTask}
+                                changeIsDone={changeIsDone}
                             />
                         </>
                     )

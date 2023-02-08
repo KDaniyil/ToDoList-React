@@ -1,6 +1,5 @@
 import { IconButton } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete'
-import FormGroup from '@mui/material/FormGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
 
@@ -9,14 +8,32 @@ type Props = {
     title: string
     isDone: boolean
     removeTask: (id: number) => void
+    changeIsDone: (id: number) => void
 }
-const ToDoListItemTask = ({ id, title, isDone, removeTask }: Props) => {
+const ToDoListItemTask = ({
+    id,
+    title,
+    isDone,
+    removeTask,
+    changeIsDone,
+}: Props) => {
     return (
         <>
             <li>
                 <FormControlLabel
-                    control={<Checkbox checked={isDone} />}
-                    label={title}
+                    control={
+                        <Checkbox
+                            checked={isDone}
+                            onClick={() => {
+                                changeIsDone(id)
+                            }}
+                        />
+                    }
+                    label={
+                        <span className={isDone ? 'text-decor' : ''}>
+                            {title}
+                        </span>
+                    }
                 />
                 <IconButton
                     aria-label="delete"

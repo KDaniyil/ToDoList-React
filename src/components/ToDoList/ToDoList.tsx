@@ -1,5 +1,5 @@
 import ToDoListItem from './ToDoListItem'
-import { movies, skills } from '../../utils/tasks'
+import { movies, skills, songs } from '../../utils/tasks'
 import { Container } from '@mui/material'
 import Grid from '@mui/material/Grid'
 
@@ -21,8 +21,14 @@ function ToDoList(props: Props) {
                 </Grid>
                 <Grid item>
                     <ToDoListItem
-                        toDoName={'Favorite movies:'}
+                        toDoName={'Movies to watch:'}
                         initTasks={movies}
+                    />
+                </Grid>
+                <Grid item>
+                    <ToDoListItem
+                        toDoName={'Songs to listen:'}
+                        initTasks={songs}
                     />
                 </Grid>
             </Grid>

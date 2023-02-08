@@ -1,3 +1,6 @@
 .listTasks{
     list-style: none;
 }
+.text-decor{
+    text-decoration: line-through;
+}
