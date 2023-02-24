@@ -1,6 +1,6 @@
 import ToDoListItem from './ToDoListItem'
 import { movies, skills, songs } from '../../utils/tasks'
-import { Container } from '@mui/material'
+import { Container, Typography } from '@mui/material'
 import Grid from '@mui/material/Grid'
 
 type Props = {}
@@ -8,10 +8,19 @@ type Props = {}
 function ToDoList(props: Props) {
     return (
         <Container>
+            <Typography
+                variant="h2"
+                component="h2"
+                align="center"
+                sx={{ marginTop: '20px' }}
+            >
+                To Do List
+            </Typography>
             <Grid
                 container
-                spacing={6}
-                sx={{ padding: '60px 0', marginLeft: '60px' }}
+                justifyContent="center"
+                spacing={4}
+                sx={{ padding: '60px 0' }}
             >
                 <Grid item>
                     <ToDoListItem

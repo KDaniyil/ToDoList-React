@@ -1,4 +1,3 @@
-import { type } from "os"
 
 export type TaskType = {
     id: number
@@ -7,16 +6,19 @@ export type TaskType = {
 }
 export const skills : TaskType[] = [
     {
-        id: 1, title: "CSS", isDone: true
+        id: 1, title: "HTML", isDone: true
     },
     {
-        id: 2, title: "JS", isDone:true
+        id: 2, title: "CSS", isDone: true
     },
     {
-        id: 3, title: "React", isDone: false
+        id: 3, title: "JS", isDone:true
     },
     {
-        id: 4, title: "Redux", isDone: false
+        id: 4, title: "React", isDone: false
+    },
+    {
+        id: 5, title: "Redux", isDone: false
     }
 ]
 export const movies : TaskType[] = [

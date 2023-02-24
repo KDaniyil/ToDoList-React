@@ -1,14 +1,7 @@
-import {
-    Button,
-    ButtonGroup,
-    CardActionArea,
-    Fab,
-    Grid,
-    TextField,
-} from '@mui/material'
+import { Button, ButtonGroup, Fab, TextField } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add'
 import { useState } from 'react'
-import { FilterValuesType } from '../../utils/tasks'
+import { FilterValuesType, TaskType } from '../../utils/tasks'
 import ToDoListItemTask from './ToDoListItemTask'
 import '../ToDoList/ToDoList.css'
 import Typography from '@mui/material/Typography'
@@ -16,11 +9,6 @@ import Typography from '@mui/material/Typography'
 type Props = {
     toDoName: string
     initTasks: TaskType[]
-}
-type TaskType = {
-    id: number
-    title: string
-    isDone: boolean
 }
 const ToDoListItem = ({ toDoName, initTasks }: Props) => {
     const [listTasks, setListTasks] = useState<TaskType[]>(initTasks)
@@ -85,7 +73,7 @@ const ToDoListItem = ({ toDoName, initTasks }: Props) => {
             <ul className="listTasks">
                 {tasksForTodoList.map(({ id, title, isDone }) => {
                     return (
-                        <>
+                        <li>
                             <ToDoListItemTask
                                 key={id}
                                 id={id}
@@ -94,7 +82,7 @@ const ToDoListItem = ({ toDoName, initTasks }: Props) => {
                                 removeTask={removeTask}
                                 changeIsDone={changeIsDone}
                             />
-                        </>
+                        </li>
                     )
                 })}
             </ul>

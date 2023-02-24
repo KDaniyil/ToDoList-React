@@ -19,33 +19,29 @@ const ToDoListItemTask = ({
 }: Props) => {
     return (
         <>
-            <li>
-                <FormControlLabel
-                    control={
-                        <Checkbox
-                            checked={isDone}
-                            onClick={() => {
-                                changeIsDone(id)
-                            }}
-                        />
-                    }
-                    label={
-                        <span className={isDone ? 'text-decor' : ''}>
-                            {title}
-                        </span>
-                    }
-                />
-                <IconButton
-                    aria-label="delete"
-                    size="small"
-                    color="primary"
-                    onClick={() => {
-                        removeTask(id)
-                    }}
-                >
-                    <DeleteIcon fontSize="inherit" />
-                </IconButton>
-            </li>
+            <FormControlLabel
+                control={
+                    <Checkbox
+                        checked={isDone}
+                        onClick={() => {
+                            changeIsDone(id)
+                        }}
+                    />
+                }
+                label={
+                    <span className={isDone ? 'text-decor' : ''}>{title}</span>
+                }
+            />
+            <IconButton
+                aria-label="delete"
+                size="small"
+                color="primary"
+                onClick={() => {
+                    removeTask(id)
+                }}
+            >
+                <DeleteIcon fontSize="inherit" />
+            </IconButton>
         </>
     )
 }
